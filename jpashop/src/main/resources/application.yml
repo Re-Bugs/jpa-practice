@@ -1,0 +1,27 @@
+#spring:
+#  datasource:
+#    # 데이터베이스 연결 URL 설정. H2 데이터베이스를 사용하고 있으며,
+#    # tcp 프로토콜을 통해 로컬에서 'jpashop' 데이터베이스에 연결한다.
+#    # MVCC=TRUE 옵션은 멀티 버전 동시성 제어를 활성화하여 더 나은 동시성 처리를 가능하게 한다.
+#    url: jdbc:h2:tcp://localhost/~/jpashop;MVCC=TRUE
+#    # 데이터베이스 연결에 사용할 사용자 이름. H2 데이터베이스의 기본 사용자 이름인 'sa'를 사용한다.
+#    username: sa
+#    # 데이터베이스 연결에 사용할 비밀번호. H2의 기본 설정으로 비밀번호는 빈 값으로 설정되어 있다.
+#    password:
+#    # 데이터베이스 드라이버 클래스 이름. H2 데이터베이스를 사용하기 위해 H2 드라이버 클래스를 지정한다.
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      # 애플리케이션 시작 시 데이터베이스 스키마를 생성하거나 업데이트하는 방법을 정의한다.
+#      # 여기서는 'create'로 설정되어 있어 매번 새로운 스키마를 생성한다.
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        # Hibernate 관련 설정. SQL 쿼리를 포맷된 형태로 출력하여 가독성을 높인다.
+#        format_sql: true
+#
+#logging:
+#  level:
+#    # 로깅 레벨 설정. Hibernate가 생성하는 SQL 쿼리를 디버그 레벨로 로깅하여 자세한 SQL 쿼리를 확인할 수 있도록 한다.
+#    org.hibernate.SQL: debug
