@@ -14,7 +14,7 @@
             <!-- 데이터베이스 접속 비밀번호를 지정, 여기서는 비어 있음 -->
             <property name="jakarta.persistence.jdbc.password" value=""/>
             <!-- 데이터베이스 접속 URL을 지정, H2 데이터베이스의 test 데이터베이스에 접속 -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:~//h2DB/test"/>
             <!-- Hibernate 방언(dialect)을 지정, 여기서는 H2 데이터베이스에 맞는 방언 사용 -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 
