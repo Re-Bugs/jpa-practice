@@ -4,7 +4,7 @@ import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass
+//@MappedSuperclass
 public abstract class BaseEntity {
     private String createBy;
     private LocalDateTime createdDate;

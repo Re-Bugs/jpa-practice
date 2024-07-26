@@ -1,4 +1,4 @@
-package hellojpa.inheritance;
+package hellojpa.proxy;
 
 import jakarta.persistence.*;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Entity
-public class Team extends BaseEntity{
+public class Team {
     @Id  @GeneratedValue
     @Column(name = "TEAM_ID")
     private Long id;

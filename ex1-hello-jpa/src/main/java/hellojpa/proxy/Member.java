@@ -1,9 +1,9 @@
-package hellojpa.inheritance;
+package hellojpa.proxy;
 
 import jakarta.persistence.*;
 
 //@Entity
-public class Member extends BaseEntity{
+public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long ID;

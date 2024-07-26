@@ -1,17 +1,18 @@
-package hellojpa.inheritance;
+package hellojpa.loding;
 
 import jakarta.persistence.*;
 
-//@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn
-public class Item {
-
-    @Id @GeneratedValue
+@Entity
+public class Child {
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
-    private int price;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
 
     public Long getId() {
         return id;
@@ -29,11 +30,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getPrice() {
-        return price;
+    public Parent getParent() {
+        return parent;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setParent(Parent parent) {
+        this.parent = parent;
     }
 }
