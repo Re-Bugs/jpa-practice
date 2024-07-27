@@ -2,7 +2,7 @@ package hellojpa.loding;
 
 import jakarta.persistence.*;
 
-@Entity
+//@Entity
 public class Child {
     @Id
     @GeneratedValue

@@ -1,11 +1,11 @@
-package hellojpa.loding;
+package hellojpa.valuetype;
 
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Team {
     @Id  @GeneratedValue
     @Column(name = "TEAM_ID")
