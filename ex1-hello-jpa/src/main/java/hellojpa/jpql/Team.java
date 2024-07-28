@@ -1,19 +1,17 @@
-package hellojpa.valuetype;
+package hellojpa.jpql;
 
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+@Entity
 public class Team {
-    @Id  @GeneratedValue
-    @Column(name = "TEAM_ID")
+    @Id @GeneratedValue
     private Long id;
-    private String name;
+    private String username;
 
-    @OneToMany
-    @JoinColumn(name = "TEAM_ID")
+    @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
     public Long getId() {
@@ -24,12 +22,12 @@ public class Team {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<Member> getMembers() {
