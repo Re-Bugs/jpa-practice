@@ -20,7 +20,7 @@
 
             <!-- 옵션 속성들 -->
             <!-- 실행되는 SQL 쿼리를 콘솔에 출력할지 여부를 설정, true로 설정 시 콘솔에 출력 -->
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
             <!-- 출력되는 SQL 쿼리를 포맷하여 가독성을 높일지 여부를 설정 -->
             <property name="hibernate.format_sql" value="true"/>
             <!-- SQL 쿼리에 주석을 추가할지 여부를 설정 -->
