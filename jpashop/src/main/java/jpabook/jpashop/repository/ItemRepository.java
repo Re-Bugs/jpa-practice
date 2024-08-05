@@ -16,7 +16,8 @@ public class ItemRepository {
         if (item.getId() == null) {
             em.persist(item);
         } else {
-            em.merge(item);
+            //파리미터로 넘어온 객체는 준영속 상태의 엔티티
+            em.merge(item); //합시 값이 없으면 null 로 업데이트 할 위험도 있다. (병합은 모든 필드를 교체한다.)
         }
     }
 

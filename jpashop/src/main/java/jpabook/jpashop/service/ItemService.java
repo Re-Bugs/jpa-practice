@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jakarta.persistence.EntityManager;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final EntityManager em;
 
     @Transactional
     public void saveItem(Item item) {
@@ -25,5 +27,13 @@ public class ItemService {
 
     public Item findOne(Long itemId) {
         return itemRepository.findOne(itemId);
+    }
+
+    @Transactional
+    public void updateItem(Long id, String name, int price, int stockQuantity) {
+        Item item = itemRepository.findOne(id);
+        item.setName(name);
+        item.setPrice(price);
+        item.setStockQuantity(stockQuantity);
     }
 }
