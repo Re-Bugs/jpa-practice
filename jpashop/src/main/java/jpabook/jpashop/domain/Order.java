@@ -5,12 +5,14 @@ import jpabook.jpashop.domain.item.Delivery;
 import jpabook.jpashop.domain.item.DeliveryStatus;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.FetchType.*;
+
 
 @Entity
 @Getter @Setter
@@ -33,6 +35,7 @@ public class Order {
 
     private LocalDateTime orderDate;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     //연관관계 편의 메서드
