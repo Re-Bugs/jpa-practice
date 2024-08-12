@@ -2,13 +2,14 @@ package study.data_jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import study.data_jpa.domain.BaseEntity;
 
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //기본 생성자 접근 제한을 protected로 설정
 @NamedQuery(name="Member.findByUsername", query="select m from Member m where m.username = :username") //namedQuery
 @ToString(of = {"id", "username", "age"})
-public class Member {
+public class Member extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;

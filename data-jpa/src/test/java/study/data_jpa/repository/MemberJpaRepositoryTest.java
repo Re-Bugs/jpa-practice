@@ -1,5 +1,6 @@
 package study.data_jpa.repository;
 
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class MemberJpaRepositoryTest {
 
     @Autowired MemberJpaRepository memberJpaRepository;
+    @Autowired MemberRepository memberRepository;
+    @Autowired EntityManager em;
 
     @Test
     public void testMember() {
@@ -63,4 +66,68 @@ public class MemberJpaRepositoryTest {
         assertThat(result.size()).isEqualTo(1);
     }
 
+    @Test
+    public void paging() throws Exception {
+
+        //given
+        memberJpaRepository.save(new Member("member1", 10));
+        memberJpaRepository.save(new Member("member2", 10));
+        memberJpaRepository.save(new Member("member3", 10));
+        memberJpaRepository.save(new Member("member4", 10));
+        memberJpaRepository.save(new Member("member5", 10));
+        int age = 10;
+        int offset = 0;
+        int limit = 3;
+
+        //when
+        List<Member> members = memberJpaRepository.findByPage(age, offset, limit);
+        long totalCount = memberJpaRepository.totalCount(age);
+
+        //페이지 계산 공식 적용...
+        // totalPage = totalCount / size ... // 마지막 페이지 ...
+        // 최초 페이지 ..
+
+        //then
+        assertThat(members.size()).isEqualTo(3);
+        assertThat(totalCount).isEqualTo(5);
+    }
+
+    @Test
+    public void bulkUpdate() throws Exception {
+        //given
+        memberJpaRepository.save(new Member("member1", 10));
+        memberJpaRepository.save(new Member("member2", 19));
+        memberJpaRepository.save(new Member("member3", 20));
+        memberJpaRepository.save(new Member("member4", 21));
+        memberJpaRepository.save(new Member("member5", 40));
+
+        //when
+        int resultCount = memberJpaRepository.bulkAgePlus(20);
+
+        //then
+        assertThat(resultCount).isEqualTo(3);
+    }
+
+    @Test
+    public void jpaEventBaseEntity() throws Exception {
+
+        //given
+        Member member = new Member("member1");
+        memberRepository.save(member); //@PrePersist
+
+        Thread.sleep(100);
+        member.setUsername("member2");
+
+        em.flush(); //@PreUpdate
+        em.clear();
+
+        //when
+        Member findMember = memberRepository.findById(member.getId()).get();
+
+        //then
+        System.out.println("findMember.createdDate = " + findMember.getCreatedBy()); //여기서는 UUID
+        System.out.println("findMember.getCreatedDate = " + findMember.getCreatedDate());
+        System.out.println("findMember.getLastModifiedBy = " + findMember.getLastModifiedBy()); //여기서는 UUID
+        System.out.println("findMember.getLastModifiedDate = " + findMember.getLastModifiedDate());
+    }
 }
