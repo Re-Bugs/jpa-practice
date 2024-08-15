@@ -1,4 +1,4 @@
-package study.querydsl.controller.entity;
+package study.querydsl.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
