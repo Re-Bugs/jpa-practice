@@ -19,17 +19,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.dto.MemberDto;
-import study.querydsl.controller.dto.QMemberDto;
+import study.querydsl.dto.QMemberDto;
 import study.querydsl.dto.UserDto;
-import study.querydsl.controller.entity.*;
 import study.querydsl.entity.Member;
+import study.querydsl.entity.QMember;
+import study.querydsl.entity.QTeam;
 import study.querydsl.entity.Team;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static study.querydsl.controller.entity.QMember.member;
-import static study.querydsl.controller.entity.QTeam.team;
+import static study.querydsl.entity.QMember.member;
+import static study.querydsl.entity.QTeam.team;
 
 @SpringBootTest
 @Transactional
